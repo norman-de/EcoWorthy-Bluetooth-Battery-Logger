@@ -97,7 +97,7 @@ bool BatteryProtocol::parseBasicInfoResponse(const uint8_t* data, uint8_t length
     offset += 2;
     
     // Calculate watts and SOC
-    batteryData.watts = (batteryData.voltage * batteryData.current) / 100.0;
+    batteryData.watts = batteryData.voltage * batteryData.current;
     if (batteryData.maxAh > 0) {
         batteryData.soc = 100.0 * (batteryData.remainingAh / batteryData.maxAh);
     } else {
